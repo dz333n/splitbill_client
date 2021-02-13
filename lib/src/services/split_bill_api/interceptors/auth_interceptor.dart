@@ -14,9 +14,7 @@ InterceptorsWrapper authInterceptor(Dio client) {
     onRequest: (RequestOptions options) async {
       client.lock();
       var token = await _getAuthToken();
-      if (token != null) {
-        options.headers.addAll({_header: token});
-      }
+      options.headers.addAll({_header: token});
       client.unlock();
       return options;
     },
