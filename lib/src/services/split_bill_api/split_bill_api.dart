@@ -4,12 +4,24 @@ import 'package:splitbill_client/config.dart';
 import 'package:splitbill_client/src/models/login_information.dart';
 import 'package:splitbill_client/src/services/split_bill_api/interceptors/auth_interceptor.dart';
 import 'package:splitbill_client/src/services/split_bill_api/interceptors/response_interceptor.dart';
+import 'package:splitbill_client/src/services/split_bill_api/token_manager.dart';
 
 part 'split_bill_api.g.dart';
 
+class _ExtendedSplitbillClient extends _SplitBillClient {
+  _ExtendedSplitbillClient(Dio dio, {String baseUrl})
+      : super(dio, baseUrl: baseUrl);
+
+  Future<String> login(LoginInformation loginInformation) async {
+    final token = await super.login(loginInformation);
+    await TokenManager.saveToken(token);
+    return token;
+  }
+}
+
 @RestApi(baseUrl: BASE_API_URL)
 abstract class SplitBillClient {
-  factory SplitBillClient(Dio dio, {String baseUrl}) = _SplitBillClient;
+  factory SplitBillClient(Dio dio, {String baseUrl}) = _ExtendedSplitbillClient;
 
   @POST('/user/login')
   Future<String> login(@Body() LoginInformation loginInformation);

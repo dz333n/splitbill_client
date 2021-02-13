@@ -1,12 +1,11 @@
 import 'package:dio/dio.dart';
 
-import 'package:splitbill_client/src/application.dart';
+import 'package:splitbill_client/src/services/split_bill_api/token_manager.dart';
 
 const _header = "X-AUTH-TOKEN";
-const _storageKey = "auth_token";
 
 Future<String> _getAuthToken() async {
-  return Application.storage.read(key: _storageKey);
+  return TokenManager.readToken();
 }
 
 InterceptorsWrapper authInterceptor(Dio client) {
