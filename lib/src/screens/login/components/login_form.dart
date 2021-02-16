@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:splitbill_client/src/application.dart';
 import 'package:splitbill_client/src/models/login_information.dart';
+import 'package:splitbill_client/src/routes/home_route.dart';
 import 'package:splitbill_client/src/services/split_bill_api/split_bill_api.dart';
 
 class _LoginInformationModel {
@@ -38,7 +40,7 @@ class _LoginFormState extends State<LoginForm> {
           _buildEmailField(),
           _buildPasswordField(),
           SizedBox(height: 32.0),
-          _buildLoginButton(),
+          _buildLoginButton(context),
         ],
       ),
     );
@@ -87,7 +89,7 @@ class _LoginFormState extends State<LoginForm> {
     );
   }
 
-  _saveForm() async {
+  _saveForm(BuildContext context) async {
     if (!_formKey.currentState.validate()) {
       return;
     }
@@ -103,13 +105,16 @@ class _LoginFormState extends State<LoginForm> {
           password: _model.password,
         ),
       );
+
+      Application.router
+          .navigateTo(context, HomeRoute.constructPath(), replace: true);
     } finally {
       setState(() => _isLoading = false);
     }
   }
 
-  Widget _buildLoginButton() {
-    final onPressed = _isLoading ? null : _saveForm;
+  Widget _buildLoginButton(BuildContext context) {
+    final onPressed = _isLoading ? null : () => _saveForm(context);
     final child = _isLoading
         ? SizedBox(
             height: 24,
