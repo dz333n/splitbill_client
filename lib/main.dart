@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:splitbill_client/src/application.dart';
 import 'package:splitbill_client/src/screens/login/login_screen.dart';
 
 void main() {
   Application.init();
-  runApp(MyApp());
+  runApp(ProviderScope(child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {

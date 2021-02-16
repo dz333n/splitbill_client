@@ -1,6 +1,7 @@
 import 'package:retrofit/retrofit.dart';
 import 'package:dio/dio.dart';
 import 'package:splitbill_client/config.dart';
+import 'package:splitbill_client/src/models/event.dart';
 import 'package:splitbill_client/src/models/login_information.dart';
 import 'package:splitbill_client/src/services/split_bill_api/interceptors/auth_interceptor.dart';
 import 'package:splitbill_client/src/services/split_bill_api/interceptors/response_interceptor.dart';
@@ -25,6 +26,9 @@ abstract class SplitBillClient {
 
   @POST('/user/login')
   Future<String> login(@Body() LoginInformation loginInformation);
+
+  @GET("/events")
+  Future<List<Event>> getEvents();
 }
 
 Dio _initDio() {
