@@ -10,6 +10,9 @@ class Application {
   static init() {
     _initStorage();
     _initRouter();
+    // Adding container here works but seems to be incorect:
+    // ProviderScope already defines own container
+    // But I don't know how to use it, so:
     container = ProviderContainer();
   }
 
