@@ -18,7 +18,7 @@ abstract class BaseRoute {
     }
 
     print('User is not authorized');
-    return LoginScreen();
+    return LoginScreen(); // FIXME: route should be changed instead
   }
 
   String get templatePath;
