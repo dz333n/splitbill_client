@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart';
-import 'package:splitbill_client/src/application.dart';
 import 'package:splitbill_client/src/components/users/user_avatar.dart';
 import 'package:splitbill_client/src/components/utils/loading_states/error_state.dart';
 import 'package:splitbill_client/src/components/utils/loading_states/loading_data_state.dart';
@@ -30,7 +29,10 @@ class EventsScreenBody extends HookWidget {
           final String formattedDate = _dateFormatter.format(event.date);
 
           return ListTile(
-            leading: UserAvatar(user: event.creator, size: 45),
+            leading: AspectRatio(
+              aspectRatio: 1,
+              child: UserAvatar(user: event.creator, size: 45),
+            ),
             title: Text(event.title),
             subtitle: Text(formattedDate),
           );
