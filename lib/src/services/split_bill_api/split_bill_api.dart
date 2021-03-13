@@ -4,7 +4,7 @@ import 'package:splitbill_client/config.dart';
 import 'package:splitbill_client/src/models/event.dart';
 import 'package:splitbill_client/src/models/login_information.dart';
 import 'package:splitbill_client/src/services/split_bill_api/interceptors/auth_interceptor.dart';
-import 'package:splitbill_client/src/services/split_bill_api/interceptors/login_screen_interceptor.dart';
+import 'package:splitbill_client/src/services/split_bill_api/interceptors/unauthorized_interceptor.dart';
 import 'package:splitbill_client/src/services/split_bill_api/interceptors/response_interceptor.dart';
 import 'package:splitbill_client/src/services/split_bill_api/token_manager.dart';
 import 'package:splitbill_client/src/models/user.dart';
@@ -41,7 +41,7 @@ Dio _initDio() {
 
   _client.interceptors.add(authInterceptor(_client));
   _client.interceptors.add(responseConverterInterceptor());
-  _client.interceptors.add(loginScreenInterceptor());
+  _client.interceptors.add(unauthorizedInterceptor());
 
   return _client;
 }

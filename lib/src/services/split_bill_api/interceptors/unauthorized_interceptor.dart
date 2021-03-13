@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 
-InterceptorsWrapper loginScreenInterceptor() {
+InterceptorsWrapper unauthorizedInterceptor() {
   return InterceptorsWrapper(
     onResponse: (Response response) {
     },
