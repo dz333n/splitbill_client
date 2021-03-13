@@ -7,6 +7,7 @@ import 'package:splitbill_client/src/services/split_bill_api/interceptors/auth_i
 import 'package:splitbill_client/src/services/split_bill_api/interceptors/login_screen_interceptor.dart';
 import 'package:splitbill_client/src/services/split_bill_api/interceptors/response_interceptor.dart';
 import 'package:splitbill_client/src/services/split_bill_api/token_manager.dart';
+import 'package:splitbill_client/src/models/user.dart';
 
 part 'split_bill_api.g.dart';
 
@@ -30,6 +31,9 @@ abstract class SplitBillClient {
 
   @GET("/events")
   Future<List<Event>> getEvents();
+
+  @GET('/user')
+  Future<User> getCurrentUser();
 }
 
 Dio _initDio() {
