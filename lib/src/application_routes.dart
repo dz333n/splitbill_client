@@ -1,13 +1,17 @@
 import 'package:fluro/fluro.dart';
 import 'package:splitbill_client/src/routes/base_route.dart';
 import 'package:splitbill_client/src/routes/home_route.dart';
+import 'package:splitbill_client/src/routes/login_route.dart';
 import 'package:splitbill_client/src/routes/not_found.dart';
 
 class ApplicationRouter extends FluroRouter {}
 
 class ApplicationRoutes {
   static List<BaseRoute> get _routes {
-    return [HomeRoute()];
+    return [
+      HomeRoute(),
+      LoginRoute(),
+    ];
   }
 
   static void configureRouter(ApplicationRouter router) {
