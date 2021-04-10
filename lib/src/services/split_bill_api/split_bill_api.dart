@@ -9,8 +9,6 @@ import 'package:splitbill_client/src/services/split_bill_api/interceptors/unauth
 import 'package:splitbill_client/src/services/split_bill_api/interceptors/response_interceptor.dart';
 import 'package:splitbill_client/src/services/split_bill_api/token_manager.dart';
 import 'package:splitbill_client/src/models/user.dart';
-import 'package:splitbill_client/src/viewmodels/current_user_view_model.dart';
-import 'package:splitbill_client/src/application.dart';
 
 part 'split_bill_api.g.dart';
 
@@ -24,15 +22,8 @@ class _ExtendedSplitbillClient extends _SplitBillClient {
     return token;
   }
 
-  Future<void> _processCurrentUser() async {
-    final userProvider = Application.container.read(currentUserViewModel);
-    await userProvider.refresh();
-  }
-
   Future<String> login(LoginInformation loginInformation) async {
     final token = await _processToken(loginInformation);
-    await _processCurrentUser();
-
     return token;
   }
 }
