@@ -1,5 +1,6 @@
 import 'package:fluro/fluro.dart';
 import 'package:splitbill_client/src/routes/base_route.dart';
+import 'package:splitbill_client/src/routes/bill_details_route.dart';
 import 'package:splitbill_client/src/routes/event_details_route.dart';
 import 'package:splitbill_client/src/routes/home_route.dart';
 import 'package:splitbill_client/src/routes/login_route.dart';
@@ -13,6 +14,7 @@ class ApplicationRoutes {
       HomeRoute(),
       LoginRoute(),
       EventDetailsRoute(),
+      BillDetailsRoute(),
     ];
   }
 

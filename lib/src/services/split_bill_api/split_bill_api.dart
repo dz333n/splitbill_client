@@ -1,6 +1,7 @@
 import 'package:retrofit/retrofit.dart';
 import 'package:dio/dio.dart';
 import 'package:splitbill_client/config.dart';
+import 'package:splitbill_client/src/models/chosen_product.dart';
 import 'package:splitbill_client/src/models/event.dart';
 import 'package:splitbill_client/src/models/event_bill.dart';
 import 'package:splitbill_client/src/models/login_information.dart';
@@ -41,6 +42,9 @@ abstract class SplitBillClient {
 
   @GET('/events/{event_id}/bills')
   Future<List<EventBill>> getEventBills(@Path("event_id") int eventId);
+
+  @GET('/bills/{bill_id}/chosen-products')
+  Future<List<ChosenProduct>> getChosenProducts(@Path("bill_id") int billId);
 }
 
 Dio _initDio() {
