@@ -25,6 +25,6 @@ class ApplicationRoutes {
   }
 
   static Handler _getHandler(BaseRoute route) {
-    return Handler(handlerFunc: route.handle);
+    return Handler(handlerFunc: route.handler);
   }
 }

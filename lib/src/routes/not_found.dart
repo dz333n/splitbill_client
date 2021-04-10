@@ -4,7 +4,7 @@ import 'package:splitbill_client/src/routes/base_route.dart';
 
 class NotFoundRoute extends BaseRoute {
   @override
-  Widget handle(BuildContext context, Map<String, List<String>> parameters) {
+  Widget handler(BuildContext context, Map<String, List<String>> parameters) {
     return Scaffold(
       appBar: AppBar(
         title: Text("Not found"),
