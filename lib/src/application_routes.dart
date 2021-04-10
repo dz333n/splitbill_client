@@ -3,6 +3,7 @@ import 'package:splitbill_client/src/routes/base_route.dart';
 import 'package:splitbill_client/src/routes/bill_details_route.dart';
 import 'package:splitbill_client/src/routes/event_details_route.dart';
 import 'package:splitbill_client/src/routes/home_route.dart';
+import 'package:splitbill_client/src/routes/login_route.dart';
 import 'package:splitbill_client/src/routes/not_found.dart';
 
 class ApplicationRouter extends FluroRouter {}
@@ -11,6 +12,7 @@ class ApplicationRoutes {
   static List<BaseRoute> get _routes {
     return [
       HomeRoute(),
+      LoginRoute(),
       EventDetailsRoute(),
       BillDetailsRoute(),
     ];

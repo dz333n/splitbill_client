@@ -13,6 +13,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       onGenerateRoute: Application.router.generator,
+      navigatorKey: Application.navigator,
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
