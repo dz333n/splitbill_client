@@ -6,8 +6,9 @@ part 'event_bill.g.dart';
 @JsonSerializable()
 class EventBill {
   Bill bill;
+  double totalCost;
 
-  EventBill({this.bill});
+  EventBill({this.bill, this.totalCost});
 
   factory EventBill.fromJson(Map<String, dynamic> json) =>
       _$EventBillFromJson(json);
