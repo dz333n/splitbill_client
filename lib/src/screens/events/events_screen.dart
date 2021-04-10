@@ -8,9 +8,6 @@ class EventsScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: Text("Events")),
       body: EventsScreenBody(),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => TokenManager.saveToken(null),
-      ),
     );
   }
 }
