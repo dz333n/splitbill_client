@@ -16,14 +16,9 @@ class _ExtendedSplitbillClient extends _SplitBillClient {
   _ExtendedSplitbillClient(Dio dio, {String baseUrl})
       : super(dio, baseUrl: baseUrl);
 
-  Future<String> _processToken(LoginInformation loginInformation) async {
+  Future<String> login(LoginInformation loginInformation) async {
     final token = await super.login(loginInformation);
     await TokenManager.saveToken(token);
-    return token;
-  }
-
-  Future<String> login(LoginInformation loginInformation) async {
-    final token = await _processToken(loginInformation);
     return token;
   }
 }
