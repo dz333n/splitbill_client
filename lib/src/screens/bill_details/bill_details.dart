@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:splitbill_client/src/screens/bill_details/components/body.dart';
 
 class BillDetailsScreen extends StatelessWidget {
   final int billId;
@@ -11,7 +12,7 @@ class BillDetailsScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text("Bill details"),
       ),
-      body: Text("Bill details"),
+      body: BillDetailsScreenBody(billId),
     );
   }
 }
