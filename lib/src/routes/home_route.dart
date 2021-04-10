@@ -4,7 +4,7 @@ import 'package:splitbill_client/src/screens/events/events_screen.dart';
 
 class HomeRoute extends BaseRoute {
   @override
-  Widget handler(BuildContext context, Map<String, List<String>> parameters) {
+  Widget handle(BuildContext context, Map<String, List<String>> parameters) {
     return EventsScreen();
   }
 

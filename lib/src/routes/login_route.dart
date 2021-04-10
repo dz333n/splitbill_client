@@ -4,12 +4,7 @@ import 'package:splitbill_client/src/routes/base_route.dart';
 
 class LoginRoute extends BaseRoute {
   @override
-  bool checkAuthorization(BuildContext context) {
-    return true;
-  }
-
-  @override
-  Widget handler(BuildContext context, Map<String, List<String>> parameters) {
+  Widget handle(BuildContext context, Map<String, List<String>> parameters) {
     return LoginScreen();
   }
 
