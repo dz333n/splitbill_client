@@ -32,7 +32,6 @@ class EventsScreenBody extends HookWidget {
 
           final goToEvent = () {
             final path = EventDetailsRoute.constructPath(eventId: event.id);
-            print(path);
             Application.router.navigateTo(context, path);
           };
 
