@@ -5,8 +5,9 @@ import 'package:splitbill_client/src/screens/bill_details/components/no_chosen_p
 
 class ChosenProductsList extends StatelessWidget {
   final List<ChosenProduct> chosenProducts;
+  final int billId;
 
-  ChosenProductsList(this.chosenProducts);
+  ChosenProductsList(this.billId, this.chosenProducts);
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +18,7 @@ class ChosenProductsList extends StatelessWidget {
     return ListView.builder(
       itemCount: chosenProducts.length,
       itemBuilder: (BuildContext context, int index) {
-        return ChosenProductCard(chosenProducts[index]);
+        return ChosenProductCard(billId, chosenProducts[index]);
       },
     );
   }

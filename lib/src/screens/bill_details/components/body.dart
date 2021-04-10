@@ -26,7 +26,7 @@ class BillDetailsScreenBody extends HookWidget {
       error: ErrorState.forAsyncValue,
       loading: LoadingDataState.forAsyncValue,
       data: (chosenProducts) {
-        return ChosenProductsList(chosenProducts);
+        return ChosenProductsList(billId, chosenProducts);
       }
     );
   }

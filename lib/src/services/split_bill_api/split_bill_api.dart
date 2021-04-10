@@ -45,6 +45,12 @@ abstract class SplitBillClient {
 
   @GET('/bills/{bill_id}/chosen-products')
   Future<List<ChosenProduct>> getChosenProducts(@Path("bill_id") int billId);
+
+  @PUT('/bills/{bill_id}/chosen-products')
+  Future putChosenProduct(
+    @Path("bill_id") int billId,
+    @Body() ChosenProduct chosenProduct,
+  );
 }
 
 Dio _initDio() {

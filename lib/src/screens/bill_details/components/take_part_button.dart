@@ -15,7 +15,7 @@ class TakePartButton extends StatelessWidget {
     );
 
     return FlatButton(
-      onPressed: () {},
+      onPressed: onTap,
       child: Text(
         "THAT'S MINE",
         style: textStyle,
