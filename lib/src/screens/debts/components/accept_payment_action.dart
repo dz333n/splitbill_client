@@ -2,18 +2,25 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:splitbill_client/src/components/utils/async_button.dart';
+import 'package:splitbill_client/src/services/split_bill_api/split_bill_api.dart';
+import 'package:splitbill_client/src/models/debt.dart';
 
 class AcceptPaymentAction extends HookWidget {
-  final double initialAmount;
+  final Debt debt;
 
-  AcceptPaymentAction(this.initialAmount);
+  AcceptPaymentAction(this.debt);
 
   @override
   Widget build(BuildContext context) {
-    final amountState = useState(initialAmount);
+    final amountState = useState(debt.money);
 
     onAccept() async {
-      await Future.delayed(const Duration(seconds: 2));
+      await client.createTransaction(
+        Debt(
+          money: amountState.value,
+          sender: debt.recipient,
+        ),
+      );
     }
 
     return Container(
@@ -51,12 +58,15 @@ typedef void OnAmountChange(double amount);
 class AmountField extends StatelessWidget {
   final double amount;
   final OnAmountChange onAmountChange;
+  final TextEditingController controller;
 
-  AmountField({@required this.amount, @required this.onAmountChange});
+  AmountField({@required this.amount, @required this.onAmountChange})
+      : this.controller = TextEditingController()..text = amount.toString();
 
   @override
   Widget build(BuildContext context) {
     return TextField(
+      controller: controller,
       decoration: InputDecoration(
         labelText: "Amount",
         focusedBorder: OutlineInputBorder(

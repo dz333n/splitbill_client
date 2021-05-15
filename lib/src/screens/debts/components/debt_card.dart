@@ -18,7 +18,7 @@ class DebtCard extends StatelessWidget {
           children: [
             DebtInfo(debt),
             SizedBox(height: 12.0),
-            AcceptPaymentAction(debt.money),
+            AcceptPaymentAction(debt),
           ],
         ),
       ),

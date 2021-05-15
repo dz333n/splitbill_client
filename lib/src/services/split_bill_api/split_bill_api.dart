@@ -55,6 +55,9 @@ abstract class SplitBillClient {
 
   @GET('/user/payments')
   Future<List<Debt>> getDebts();
+
+  @POST('/user/payments')
+  Future<void> createTransaction(@Body() Debt debt);
 }
 
 Dio _initDio() {
