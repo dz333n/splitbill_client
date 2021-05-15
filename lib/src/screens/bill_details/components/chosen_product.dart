@@ -15,12 +15,7 @@ class ChosenProductCard extends HookWidget {
     @required this.onCoefficientChange,
   });
 
-  static final _padding = const EdgeInsets.only(
-    top: 16.0,
-    left: 16.0,
-    right: 16.0,
-    bottom: 0.0,
-  );
+  static final _padding = const EdgeInsets.all(16.0);
 
   @override
   Widget build(BuildContext context) {
@@ -34,16 +29,11 @@ class ChosenProductCard extends HookWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             ProductDescription(product),
-            if (coefficient != null) Text(coefficient.toStringAsPrecision(2)),
+            SizedBox(height: 16.0),
             FactorButton(
               coefficient: coefficient,
               onCoefficientChange: onCoefficientChange,
             ),
-            // Center(
-            //   child: TakePartButton(
-            //     onTap: () => 1,
-            //   ),
-            // )
           ],
         ),
       ),

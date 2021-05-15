@@ -52,7 +52,11 @@ class FactorButton extends StatelessWidget {
 
   change(offset) {
     return () {
-      onCoefficientChange(coefficient + offset);
+      double newCoefficient = coefficient + offset;
+      if (newCoefficient == 0) {
+        newCoefficient = null;
+      }
+      onCoefficientChange(newCoefficient);
     };
   }
 }
