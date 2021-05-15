@@ -1,14 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:splitbill_client/src/models/chosen_product.dart';
 import 'package:splitbill_client/src/screens/bill_details/components/product_description.dart';
 import 'package:splitbill_client/src/screens/bill_details/components/take_part_button.dart';
-import 'package:splitbill_client/src/services/split_bill_api/split_bill_api.dart';
 
-class ChosenProductCard extends StatelessWidget {
-  final int billId;
+typedef void OnCoefficientChange(double coefficient);
+
+class ChosenProductCard extends HookWidget {
   final ChosenProduct chosenProduct;
+  final OnCoefficientChange onCoefficientChange;
 
-  ChosenProductCard(this.billId, this.chosenProduct);
+  ChosenProductCard({
+    @required this.chosenProduct,
+    @required this.onCoefficientChange,
+  });
 
   static final _padding = const EdgeInsets.only(
     top: 16.0,
@@ -19,6 +24,7 @@ class ChosenProductCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final coefficient = chosenProduct.coefficient;
     final product = chosenProduct.product;
 
     return Card(
@@ -28,23 +34,14 @@ class ChosenProductCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             ProductDescription(product),
+            if (coefficient != null) Text(coefficient.toStringAsPrecision(2)),
             Center(
               child: TakePartButton(
-                onTap: () => _takePart(),
+                onTap: () => this.onCoefficientChange(1),
               ),
             )
           ],
         ),
-      ),
-    );
-  }
-
-  void _takePart() {
-    client.putChosenProduct(
-      billId,
-      ChosenProduct(
-        coefficient: 1,
-        product: chosenProduct.product,
       ),
     );
   }

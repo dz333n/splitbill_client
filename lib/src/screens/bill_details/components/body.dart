@@ -7,7 +7,8 @@ import 'package:splitbill_client/src/models/chosen_product.dart';
 import 'package:splitbill_client/src/screens/bill_details/components/chosen_products_list.dart';
 import 'package:splitbill_client/src/services/split_bill_api/split_bill_api.dart';
 
-final _chosenProducts = FutureProvider.autoDispose.family<List<ChosenProduct>, int>((ref, billId) {
+final _chosenProducts =
+    FutureProvider.autoDispose.family<List<ChosenProduct>, int>((ref, billId) {
   ref.maintainState = true;
 
   return client.getChosenProducts(billId);
@@ -20,14 +21,65 @@ class BillDetailsScreenBody extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final chosenProductsState = useProvider(_chosenProducts(billId));
+    final chosenProductsStateProvider = useProvider(_chosenProducts(billId));
 
-    return chosenProductsState.when(
+    return chosenProductsStateProvider.when(
       error: ErrorState.forAsyncValue,
       loading: LoadingDataState.forAsyncValue,
       data: (chosenProducts) {
-        return ChosenProductsList(billId, chosenProducts);
+        return _ChosenProductsList(
+          billId: billId,
+          chosenProducts: chosenProducts,
+        );
+      },
+    );
+  }
+}
+
+class _ChosenProductsList extends HookWidget {
+  final List<ChosenProduct> chosenProducts;
+  final int billId;
+
+  _ChosenProductsList({
+    @required this.billId,
+    @required this.chosenProducts,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final chosenProductsState = useState(chosenProducts);
+
+    onCoefficientChange(
+      ChosenProduct chosenProduct,
+      double coefficient,
+    ) async {
+      try {
+        final updatedChosenProduct = ChosenProduct(
+          coefficient: coefficient,
+          product: chosenProduct.product,
+        );
+
+        await client.updateChosenProduct(billId, updatedChosenProduct);
+
+        // We need to create a new array with the new product
+        // so that we do not modify the old one
+        final products = chosenProductsState.value.map((e) {
+          if (e != chosenProduct) {
+            return e;
+          }
+
+          return updatedChosenProduct;
+        }).toList();
+
+        chosenProductsState.value = products;
+      } on Exception catch (error) {
+        print("Got an error, ${error.toString()}");
       }
+    }
+
+    return ChosenProductsList(
+      chosenProducts: chosenProductsState.value,
+      onCoefficientChange: onCoefficientChange,
     );
   }
 }

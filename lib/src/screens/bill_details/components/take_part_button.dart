@@ -23,4 +23,3 @@ class TakePartButton extends StatelessWidget {
     );
   }
 }
-

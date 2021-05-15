@@ -1,2 +1,2 @@
-// *https* is important
-const BASE_API_URL = "https://sb_domain/api";
+// *https* is important for mobile devises
+const BASE_API_URL = "http://10.0.1.140/api";

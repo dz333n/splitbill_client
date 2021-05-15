@@ -3,11 +3,17 @@ import 'package:splitbill_client/src/models/chosen_product.dart';
 import 'package:splitbill_client/src/screens/bill_details/components/chosen_product.dart';
 import 'package:splitbill_client/src/screens/bill_details/components/no_chosen_products.dart';
 
+typedef void OnCoefficientChange(
+    ChosenProduct chosenProduct, double coefficient);
+
 class ChosenProductsList extends StatelessWidget {
   final List<ChosenProduct> chosenProducts;
-  final int billId;
+  final OnCoefficientChange onCoefficientChange;
 
-  ChosenProductsList(this.billId, this.chosenProducts);
+  ChosenProductsList({
+    @required this.chosenProducts,
+    @required this.onCoefficientChange,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +24,13 @@ class ChosenProductsList extends StatelessWidget {
     return ListView.builder(
       itemCount: chosenProducts.length,
       itemBuilder: (BuildContext context, int index) {
-        return ChosenProductCard(billId, chosenProducts[index]);
+        final chosenProduct = chosenProducts[index];
+
+        return ChosenProductCard(
+          chosenProduct: chosenProduct,
+          onCoefficientChange: (double coefficient) =>
+              this.onCoefficientChange(chosenProduct, coefficient),
+        );
       },
     );
   }

@@ -3,8 +3,13 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:splitbill_client/src/application.dart';
 
 void main() {
-  Application.init();
-  runApp(ProviderScope(child: MyApp()));
+  Application.init().then(
+    (value) => runApp(
+      ProviderScope(
+        child: MyApp(),
+      ),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {

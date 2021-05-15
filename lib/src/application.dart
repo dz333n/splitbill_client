@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:splitbill_client/src/application_routes.dart';
 
 class Application {
   static final navigator = GlobalKey<NavigatorState>();
   static ApplicationRouter router;
-  static FlutterSecureStorage storage;
+  static SharedPreferences storage;
 
-  static init() {
-    _initStorage();
+  static Future init() async {
+    await _initStorage();
     _initRouter();
   }
 
-  static _initStorage() {
-    storage = FlutterSecureStorage();
+  static _initStorage() async {
+    storage = await SharedPreferences.getInstance();
   }
 
   static _initRouter() {

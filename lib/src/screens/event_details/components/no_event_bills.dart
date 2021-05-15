@@ -4,7 +4,7 @@ class NoEventBills extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Text("List of bills is empty 🤷‍"),
+      child: Text("List of bills kinda is empty 🤷‍"),
     );
   }
 }

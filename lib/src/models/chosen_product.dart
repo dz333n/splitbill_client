@@ -8,8 +8,9 @@ class ChosenProduct {
   final Product product;
   final double coefficient;
 
-  ChosenProduct({ this.product, this.coefficient });
+  ChosenProduct({this.product, this.coefficient});
 
-  factory ChosenProduct.fromJson(Map<String, dynamic> json) => _$ChosenProductFromJson(json);
+  factory ChosenProduct.fromJson(Map<String, dynamic> json) =>
+      _$ChosenProductFromJson(json);
   Map<String, dynamic> toJson() => _$ChosenProductToJson(this);
 }

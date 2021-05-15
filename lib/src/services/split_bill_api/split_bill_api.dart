@@ -47,7 +47,7 @@ abstract class SplitBillClient {
   Future<List<ChosenProduct>> getChosenProducts(@Path("bill_id") int billId);
 
   @PUT('/bills/{bill_id}/chosen-products')
-  Future putChosenProduct(
+  Future updateChosenProduct(
     @Path("bill_id") int billId,
     @Body() ChosenProduct chosenProduct,
   );
