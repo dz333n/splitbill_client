@@ -19,7 +19,7 @@ class DebtInfo extends StatelessWidget {
     final spacer = const SizedBox(width: 8);
 
     return Container(
-      height: 40,
+      height: 48,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.center,

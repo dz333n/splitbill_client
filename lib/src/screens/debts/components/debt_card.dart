@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:splitbill_client/src/models/debt.dart';
+import 'package:splitbill_client/src/screens/debts/components/accept_payment_action.dart';
 import 'package:splitbill_client/src/screens/debts/components/debt_info.dart';
 
 class DebtCard extends StatelessWidget {
@@ -10,19 +11,16 @@ class DebtCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(
-              top: 8.0,
-              bottom: 8.0,
-              left: 4,
-              right: 4.0,
-            ),
-            child: DebtInfo(debt),
-          ),
-        ],
+      child: Padding(
+        padding: const EdgeInsets.all(12.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            DebtInfo(debt),
+            SizedBox(height: 12.0),
+            AcceptPaymentAction(debt.money),
+          ],
+        ),
       ),
     );
   }
