@@ -9,8 +9,6 @@ import 'package:splitbill_client/src/services/split_bill_api/split_bill_api.dart
 
 final _chosenProducts =
     FutureProvider.autoDispose.family<List<ChosenProduct>, int>((ref, billId) {
-  ref.maintainState = true;
-
   return client.getChosenProducts(billId);
 });
 
@@ -47,6 +45,7 @@ class _ChosenProductsList extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Local cache for products, so that we don't need to refetch whole list
     final chosenProductsState = useState(chosenProducts);
 
     onCoefficientChange(
