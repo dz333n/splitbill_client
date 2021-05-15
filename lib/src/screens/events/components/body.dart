@@ -36,13 +36,13 @@ class EventsScreenBody extends HookWidget {
           };
 
           return ListTile(
+            title: Text(event.title),
+            subtitle: Text(formattedDate),
             onTap: goToEvent,
             leading: AspectRatio(
               aspectRatio: 1,
               child: UserAvatar(user: event.creator, size: 45),
             ),
-            title: Text(event.title),
-            subtitle: Text(formattedDate),
           );
         },
       ),
