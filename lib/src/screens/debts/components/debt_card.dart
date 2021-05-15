@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:splitbill_client/src/components/users/user_avatar.dart';
 import 'package:splitbill_client/src/models/debt.dart';
+import 'package:splitbill_client/src/screens/debts/components/accept_payment_action.dart';
 
 class DebtCard extends StatelessWidget {
   final Debt debt;
@@ -12,17 +13,36 @@ class DebtCard extends StatelessWidget {
     final money = debt.money;
     final recipient = debt.recipient;
 
-    return ListTile(
-      leading: AspectRatio(
-        aspectRatio: 1,
-        child: UserAvatar(user: recipient, size: 45),
-      ),
-      title: Text(recipient.name),
-      trailing: Text(
-        "${money.toString()} $symbol",
-        style: TextStyle(
-          color: textColor,
-        ),
+    return Card(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Container(
+            height: 60,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Flexible(
+                  flex: 1,
+                  child: AspectRatio(
+                    aspectRatio: 2,
+                    child: UserAvatar(user: recipient, size: 60),
+                  ),
+                ),
+                Flexible(flex: 4, child: Text(recipient.name)),
+                Flexible(
+                  flex: 2,
+                  child: Text(
+                    "${money.toString()} $symbol",
+                    style: TextStyle(
+                      color: textColor,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
