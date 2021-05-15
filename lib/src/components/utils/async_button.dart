@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:rounded_loading_button/rounded_loading_button.dart';
 
 class AsyncButton extends HookWidget {
   final Function operation;
@@ -10,41 +9,18 @@ class AsyncButton extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _btnController =
-        useMemoized(() => RoundedLoadingButtonController(), []);
-    final isMounted = useIsMounted();
-
-    _addToCart() async {
+    perform() async {
       try {
-        _btnController.start();
-
         await operation();
-
-        if (isMounted()) {
-          _btnController.success();
-        }
-      } catch (e) {
-        if (isMounted()) {
-          _btnController.error();
-        }
-      } finally {
-        await Future.delayed(const Duration(seconds: 1));
-        if (isMounted()) {
-          _btnController.stop();
-          _btnController.reset();
-        }
-      }
+      } catch (e) {}
     }
 
     return Container(
-      child: RoundedLoadingButton(
-        borderRadius: 0,
-        color: Colors.blue,
-        successColor: Colors.green,
-        errorColor: Colors.red,
+      width: double.infinity,
+      height: double.infinity,
+      child: ElevatedButton(
         child: child,
-        controller: _btnController,
-        onPressed: _addToCart,
+        onPressed: perform,
       ),
     );
   }

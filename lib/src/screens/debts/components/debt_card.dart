@@ -5,8 +5,12 @@ import 'package:splitbill_client/src/screens/debts/components/debt_info.dart';
 
 class DebtCard extends StatelessWidget {
   final Debt debt;
+  final OnAccept onAccept;
 
-  DebtCard(this.debt);
+  DebtCard({
+    @required this.debt,
+    @required this.onAccept,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +22,10 @@ class DebtCard extends StatelessWidget {
           children: [
             DebtInfo(debt),
             SizedBox(height: 12.0),
-            AcceptPaymentAction(debt),
+            AcceptPaymentAction(
+              debt: debt,
+              onAccept: onAccept,
+            ),
           ],
         ),
       ),

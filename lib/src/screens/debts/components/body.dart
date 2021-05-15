@@ -16,13 +16,26 @@ class DebtsScreenBody extends HookWidget {
   Widget build(BuildContext context) {
     final debtsListProvider = useProvider(_debtsList);
 
+    onAccept(double amount, Debt debt) async {
+      await client.createTransaction(
+        Debt(
+          money: amount,
+          sender: debt.recipient,
+        ),
+      );
+      await context.refresh(_debtsList);
+    }
+
     return debtsListProvider.when(
       loading: LoadingDataState.forAsyncValue,
       error: ErrorState.forAsyncValue,
       data: (debtsList) => ListView.builder(
         itemCount: debtsList.length,
         itemBuilder: (BuildContext context, int index) {
-          return DebtCard(debtsList[index]);
+          return DebtCard(
+            debt: debtsList[index],
+            onAccept: onAccept,
+          );
         },
       ),
     );
