@@ -23,14 +23,14 @@ class ProductDescription extends StatelessWidget {
               style: textTheme.bodyText2.copyWith(fontSize: 16.0),
             ),
             Text(
-              "Amount: $amount",
+              "Quantity: $amount",
               style: textTheme.bodyText2.copyWith(
                 color: const Color.fromRGBO(0, 0, 0, 0.5),
               ),
             ),
           ],
         ),
-        Text("$price G"),
+        Text("$price 💰"),
       ],
     );
   }
