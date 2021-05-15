@@ -23,7 +23,7 @@ class FactorButton extends StatelessWidget {
   Widget _buildInitialButton() {
     return Row(children: [
       Expanded(
-        child: OutlineButton(
+        child: OutlinedButton(
           onPressed: () => {
             onCoefficientChange(1),
           },

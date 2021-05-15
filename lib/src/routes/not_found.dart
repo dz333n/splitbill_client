@@ -14,7 +14,7 @@ class NotFoundRoute extends BaseRoute {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text("Oops! Page does not exist!"),
-            RaisedButton(
+            ElevatedButton(
               onPressed: () {
                 Application.router.navigateTo(context, "/");
               },

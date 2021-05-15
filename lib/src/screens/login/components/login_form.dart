@@ -123,7 +123,7 @@ class _LoginFormState extends State<LoginForm> {
           )
         : Text("Login");
 
-    return RaisedButton(
+    return ElevatedButton(
       onPressed: onPressed,
       child: child,
     );
