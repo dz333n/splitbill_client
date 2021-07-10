@@ -28,7 +28,7 @@ class AcceptPaymentAction extends HookWidget {
           Flexible(
             flex: 1,
             child: AmountField(
-              amount: amountState.value,
+              initialAmount: debt.money,
               onAmountChange: (amount) => amountState.value = amount,
             ),
           ),
@@ -51,17 +51,16 @@ class AcceptPaymentAction extends HookWidget {
 
 typedef void OnAmountChange(double amount);
 
-class AmountField extends StatelessWidget {
-  final double amount;
+class AmountField extends HookWidget {
+  final double initialAmount;
   final OnAmountChange onAmountChange;
-  final TextEditingController controller;
 
-  AmountField({@required this.amount, @required this.onAmountChange})
-      /* TODO: Initing controller this way causes issues on typing */
-      : this.controller = TextEditingController()..text = amount.toString();
+  AmountField({@required this.initialAmount, @required this.onAmountChange});
 
   @override
   Widget build(BuildContext context) {
+    final controller = useTextEditingController(text: initialAmount.toString());
+
     return TextField(
       controller: controller,
       decoration: InputDecoration(
@@ -73,10 +72,10 @@ class AmountField extends StatelessWidget {
           borderSide: BorderSide(),
         ),
       ),
-      keyboardType: TextInputType.number,
+      keyboardType: TextInputType.numberWithOptions(decimal: true),
       onChanged: (value) => onAmountChange(double.parse(value)),
       inputFormatters: <TextInputFormatter>[
-        FilteringTextInputFormatter.digitsOnly
+        FilteringTextInputFormatter.allow(RegExp(r'^(\d+)?[,.]?\d{0,2}')),
       ],
     );
   }
