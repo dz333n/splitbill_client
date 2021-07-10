@@ -8,7 +8,7 @@ import 'package:splitbill_client/src/screens/event_details/components/no_event_b
 class EventBillsList extends StatelessWidget {
   final List<EventBill> eventBills;
 
-  EventBillsList({@required this.eventBills});
+  EventBillsList({required this.eventBills});
 
   @override
   Widget build(BuildContext context) {

@@ -28,7 +28,7 @@ class DebtInfo extends StatelessWidget {
             flex: 1,
             child: AspectRatio(
               aspectRatio: 1,
-              child: UserAvatar(user: recipient, size: 60),
+              child: UserAvatar(user: recipient!, size: 60),
             ),
           ),
           spacer,

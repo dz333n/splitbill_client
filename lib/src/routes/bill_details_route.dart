@@ -4,8 +4,8 @@ import 'package:splitbill_client/src/screens/bill_details/bill_details.dart';
 
 class BillDetailsRoute extends BaseRoute {
   @override
-  Widget handler(BuildContext context, Map<String, List<String>> parameters) {
-    final billId = int.tryParse(parameters['bill_id'][0]);
+  Widget handler(BuildContext? context, Map<String, List<String>> parameters) {
+    final billId = int.parse(parameters['bill_id']![0]);
 
     return BillDetailsScreen(billId);
   }
@@ -13,5 +13,5 @@ class BillDetailsRoute extends BaseRoute {
   @override
   String get templatePath => '/bills/:bill_id';
 
-  static String constructPath({ @required int billId }) => '/bills/$billId';
+  static String constructPath({required int billId}) => '/bills/$billId';
 }

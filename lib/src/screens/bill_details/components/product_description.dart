@@ -20,11 +20,11 @@ class ProductDescription extends StatelessWidget {
           children: [
             Text(
               product.title,
-              style: textTheme.bodyText2.copyWith(fontSize: 16.0),
+              style: textTheme.bodyText2!.copyWith(fontSize: 16.0),
             ),
             Text(
               "Quantity: $amount",
-              style: textTheme.bodyText2.copyWith(
+              style: textTheme.bodyText2!.copyWith(
                 color: const Color.fromRGBO(0, 0, 0, 0.5),
               ),
             ),

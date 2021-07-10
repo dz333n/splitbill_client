@@ -3,12 +3,12 @@ import 'package:shared_preferences/shared_preferences.dart';
 class TokenManager {
   static const _storageKey = "auth_token";
 
-  static Future<String> readToken() async {
+  static Future<String?> readToken() async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     return sharedPreferences.getString(_storageKey);
   }
 
-  static Future saveToken(String token) async {
+  static Future saveToken(String? token) async {
     if (token == null) {
       token = '';
     }

@@ -39,8 +39,8 @@ class _ChosenProductsList extends HookWidget {
   final int billId;
 
   _ChosenProductsList({
-    @required this.billId,
-    @required this.chosenProducts,
+    required this.billId,
+    required this.chosenProducts,
   });
 
   @override
@@ -50,7 +50,7 @@ class _ChosenProductsList extends HookWidget {
 
     onCoefficientChange(
       ChosenProduct chosenProduct,
-      double coefficient,
+      double? coefficient,
     ) async {
       try {
         final updatedChosenProduct = ChosenProduct(

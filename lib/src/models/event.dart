@@ -10,8 +10,14 @@ class Event {
   final DateTime date;
   final User creator;
 
-  Event({this.id, this.title, this.date, this.creator});
+  Event({
+    required this.id,
+    required this.title,
+    required this.date,
+    required this.creator,
+  });
 
   factory Event.fromJson(Map<String, dynamic> json) => _$EventFromJson(json);
+
   Map<String, dynamic> toJson() => _$EventToJson(this);
 }

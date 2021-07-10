@@ -4,7 +4,7 @@ import 'package:splitbill_client/src/screens/debts/debts_screen.dart';
 import 'package:splitbill_client/src/screens/events/events_screen.dart';
 
 class HomeScreen extends HookWidget {
-  HomeScreen({Key key}) : super(key: key);
+  HomeScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
 class ErrorState extends StatelessWidget {
-  final StackTrace stackTrace;
+  final StackTrace? stackTrace;
   final Object error;
 
-  ErrorState({this.error, this.stackTrace}) {
+  ErrorState({required this.error, this.stackTrace}) {
     print(this.error.toString());
     print(this.stackTrace.toString());
   }
 
-  static ErrorState forAsyncValue(Object error, StackTrace stackTrace) {
+  static ErrorState forAsyncValue(Object error, StackTrace? stackTrace) {
     return ErrorState(error: error, stackTrace: stackTrace);
   }
 

@@ -6,9 +6,9 @@ part 'chosen_product.g.dart';
 @JsonSerializable()
 class ChosenProduct {
   final Product product;
-  final double coefficient;
+  final double? coefficient;
 
-  ChosenProduct({this.product, this.coefficient});
+  ChosenProduct({required this.product, this.coefficient});
 
   factory ChosenProduct.fromJson(Map<String, dynamic> json) =>
       _$ChosenProductFromJson(json);

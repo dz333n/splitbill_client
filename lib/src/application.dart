@@ -3,7 +3,7 @@ import 'package:splitbill_client/src/application_routes.dart';
 
 class Application {
   static final navigator = GlobalKey<NavigatorState>();
-  static ApplicationRouter router;
+  static late ApplicationRouter router;
 
   static Future init() async {
     _initRouter();

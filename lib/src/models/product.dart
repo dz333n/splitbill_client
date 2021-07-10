@@ -11,9 +11,16 @@ class Product {
   final String title;
   final Bill bill;
 
-  Product({this.amount, this.price, this.title, this.id, this.bill});
+  Product({
+    required this.amount,
+    required this.price,
+    required this.title,
+    required this.id,
+    required this.bill,
+  });
 
   factory Product.fromJson(Map<String, dynamic> json) =>
       _$ProductFromJson(json);
+
   Map<String, dynamic> toJson() => _$ProductToJson(this);
 }
