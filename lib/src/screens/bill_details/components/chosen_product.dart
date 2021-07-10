@@ -4,15 +4,15 @@ import 'package:splitbill_client/src/models/chosen_product.dart';
 import 'package:splitbill_client/src/screens/bill_details/components/factor_button.dart';
 import 'package:splitbill_client/src/screens/bill_details/components/product_description.dart';
 
-typedef void OnCoefficientChange(double coefficient);
+typedef void OnCoefficientChange(double? coefficient);
 
 class ChosenProductCard extends HookWidget {
   final ChosenProduct chosenProduct;
   final OnCoefficientChange onCoefficientChange;
 
   ChosenProductCard({
-    @required this.chosenProduct,
-    @required this.onCoefficientChange,
+    required this.chosenProduct,
+    required this.onCoefficientChange,
   });
 
   static final _padding = const EdgeInsets.all(16.0);

@@ -7,13 +7,20 @@ import 'package:splitbill_client/src/application.dart';
 
 InterceptorsWrapper unauthorizedInterceptor() {
   return InterceptorsWrapper(
-    onError: (DioError error) async {
+    onError: (
+      DioError error,
+      ErrorInterceptorHandler handler,
+    ) async {
       if (error.response == null ||
-          error.response.statusCode == HttpStatus.unauthorized) {
+          error.response!.statusCode == HttpStatus.unauthorized) {
         await TokenManager.saveToken(null);
-        Application.navigator.currentState
-            .pushReplacementNamed(LoginRoute.constructPath());
+
+        Application.navigator.currentState!.pushReplacementNamed(
+          LoginRoute.constructPath(),
+        );
       }
+
+      return handler.next(error);
     },
   );
 }

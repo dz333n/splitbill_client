@@ -8,7 +8,7 @@ class UserAvatar extends StatelessWidget {
   final User user;
   final int size;
 
-  UserAvatar({this.user, this.size = 45});
+  UserAvatar({required this.user, this.size = 45});
 
   @override
   Widget build(BuildContext context) {

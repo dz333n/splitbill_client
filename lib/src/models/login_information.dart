@@ -7,8 +7,13 @@ class LoginInformation {
   final String email;
   final String password;
 
-  LoginInformation({ this.email, this.password });
+  LoginInformation({
+    required this.email,
+    required this.password,
+  });
 
-  factory LoginInformation.fromJson(Map<String, dynamic> json) => _$LoginInformationFromJson(json);
+  factory LoginInformation.fromJson(Map<String, dynamic> json) =>
+      _$LoginInformationFromJson(json);
+
   Map<String, dynamic> toJson() => _$LoginInformationToJson(this);
 }

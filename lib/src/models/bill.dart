@@ -10,8 +10,13 @@ class Bill {
   @JsonKey(name: 'user')
   User creator;
 
-  Bill({ this.id, this.name, this.creator });
-  
+  Bill({
+    required this.id,
+    required this.name,
+    required this.creator,
+  });
+
   factory Bill.fromJson(Map<String, dynamic> json) => _$BillFromJson(json);
+
   Map<String, dynamic> toJson() => _$BillToJson(this);
 }

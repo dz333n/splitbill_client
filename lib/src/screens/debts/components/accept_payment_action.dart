@@ -11,8 +11,8 @@ class AcceptPaymentAction extends HookWidget {
   final OnAccept onAccept;
 
   AcceptPaymentAction({
-    @required this.debt,
-    @required this.onAccept,
+    required this.debt,
+    required this.onAccept,
   });
 
   @override
@@ -55,7 +55,10 @@ class AmountField extends HookWidget {
   final double initialAmount;
   final OnAmountChange onAmountChange;
 
-  AmountField({@required this.initialAmount, @required this.onAmountChange});
+  AmountField({
+    required this.initialAmount,
+    required this.onAmountChange,
+  });
 
   @override
   Widget build(BuildContext context) {

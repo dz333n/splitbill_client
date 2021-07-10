@@ -15,7 +15,7 @@ import 'package:splitbill_client/src/models/user.dart';
 part 'split_bill_api.g.dart';
 
 class _ExtendedSplitbillClient extends _SplitBillClient {
-  _ExtendedSplitbillClient(Dio dio, {String baseUrl})
+  _ExtendedSplitbillClient(Dio dio, {String? baseUrl})
       : super(dio, baseUrl: baseUrl);
 
   Future<String> login(LoginInformation loginInformation) async {

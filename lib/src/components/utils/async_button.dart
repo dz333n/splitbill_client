@@ -5,7 +5,10 @@ class AsyncButton extends HookWidget {
   final Function operation;
   final Widget child;
 
-  AsyncButton({@required this.operation, @required this.child});
+  AsyncButton({
+    required this.operation,
+    required this.child,
+  });
 
   @override
   Widget build(BuildContext context) {

@@ -7,6 +7,11 @@ import 'package:splitbill_client/src/services/split_bill_api/split_bill_api.dart
 class _LoginInformationModel {
   String email;
   String password;
+
+  _LoginInformationModel({
+    this.email: '',
+    this.password: '',
+  });
 }
 
 class LoginForm extends StatefulWidget {
@@ -21,8 +26,8 @@ class _LoginFormState extends State<LoginForm> {
   static final _validEmailRegex = RegExp(
       r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?)*$");
 
-  _LoginInformationModel _model;
-  bool _isLoading;
+  late _LoginInformationModel _model;
+  late bool _isLoading;
 
   @override
   void initState() {
@@ -52,11 +57,11 @@ class _LoginFormState extends State<LoginForm> {
         icon: Icon(Icons.email),
         labelText: "User email",
       ),
-      onSaved: (String value) {
-        _model.email = value;
+      onSaved: (String? value) {
+        _model.email = value!;
       },
-      validator: (String value) {
-        if (value.isEmpty) {
+      validator: (String? value) {
+        if (value!.isEmpty) {
           return 'Please enter your email';
         }
 
@@ -72,15 +77,15 @@ class _LoginFormState extends State<LoginForm> {
   _buildPasswordField() {
     return TextFormField(
       obscureText: true,
-      onSaved: (String value) {
-        _model.password = value;
+      onSaved: (String? value) {
+        _model.password = value!;
       },
       decoration: const InputDecoration(
         icon: Icon(Icons.vpn_key),
         labelText: "Password",
       ),
-      validator: (String value) {
-        if (value.isEmpty) {
+      validator: (String? value) {
+        if (value!.isEmpty) {
           return 'This one seems empty to me 🤔';
         }
 
@@ -90,13 +95,13 @@ class _LoginFormState extends State<LoginForm> {
   }
 
   _saveForm(BuildContext context) async {
-    if (!_formKey.currentState.validate()) {
+    if (!_formKey.currentState!.validate()) {
       return;
     }
 
     setState(() => _isLoading = true);
 
-    _formKey.currentState.save();
+    _formKey.currentState!.save();
 
     try {
       await client.login(

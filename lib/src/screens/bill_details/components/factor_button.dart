@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
-typedef void OnCoefficientChange(double coefficient);
+typedef void OnCoefficientChange(double? coefficient);
 
 class FactorButton extends StatelessWidget {
-  final double coefficient;
+  final double? coefficient;
   final OnCoefficientChange onCoefficientChange;
 
   FactorButton({
-    @required this.coefficient,
-    @required this.onCoefficientChange,
+    this.coefficient,
+    required this.onCoefficientChange,
   });
 
   @override
@@ -52,7 +52,7 @@ class FactorButton extends StatelessWidget {
 
   change(offset) {
     return () {
-      double newCoefficient = coefficient + offset;
+      double? newCoefficient = coefficient! + offset;
       if (newCoefficient == 0) {
         newCoefficient = null;
       }

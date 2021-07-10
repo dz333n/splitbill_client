@@ -8,8 +8,8 @@ class DebtCard extends StatelessWidget {
   final OnAccept onAccept;
 
   DebtCard({
-    @required this.debt,
-    @required this.onAccept,
+    required this.debt,
+    required this.onAccept,
   });
 
   @override

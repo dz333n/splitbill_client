@@ -8,7 +8,10 @@ class EventBill {
   Bill bill;
   double totalCost;
 
-  EventBill({this.bill, this.totalCost});
+  EventBill({
+    required this.bill,
+    required this.totalCost,
+  });
 
   factory EventBill.fromJson(Map<String, dynamic> json) =>
       _$EventBillFromJson(json);
